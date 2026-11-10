@@ -1,5 +1,8 @@
 // Service Worker – Mi Casa
-const VERSION = 'micasa-v1.0.0';
+// Identificador propio: todas las apps de nutricrispy-oss.github.io comparten dominio,
+// así que esta app solo crea y borra cachés con el prefijo 'micasa-hijos-'.
+const PREFIX = 'micasa-hijos-';
+const VERSION = PREFIX + 'v1.0.1';
 const SHELL = [
   './', 'index.html', 'manifest.json', 'css/styles.css',
   'js/app.js', 'js/config.js', 'js/logic.js', 'js/ui.js', 'js/store-local.js', 'js/store-supabase.js',
@@ -10,7 +13,7 @@ self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
 });
 self.addEventListener('activate', e => {
-  e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== VERSION).map(k => caches.delete(k)))).then(() => self.clients.claim()));
+  e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => (k.startsWith(PREFIX) || k.startsWith('micasa-v')) && k !== VERSION).map(k => caches.delete(k)))).then(() => self.clients.claim()));
 });
 
 self.addEventListener('fetch', e => {

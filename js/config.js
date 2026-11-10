@@ -6,7 +6,8 @@
 //  reglas RLS de la base de datos.
 // =====================================================================
 export const CONFIG = {
-  SUPABASE_URL: '',       // ej: 'https://abcdefgh.supabase.co'
-  SUPABASE_ANON_KEY: '',  // ej: 'eyJhbGciOi...'
-  VERSION: '1.0.0',
+  SUPABASE_URL: 'https://rujhmxkdhdbavdruudbr.supabase.co',
+  SUPABASE_ANON_KEY: 'sb_publishable_id0woysUO6GYDyNlNPQBhw_oL1R3n9a',
+  VERSION: '1.0.1',
+  APP_ID: 'micasa-hijos-app',
 };
