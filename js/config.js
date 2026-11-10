@@ -8,6 +8,8 @@
 export const CONFIG = {
   SUPABASE_URL: 'https://rujhmxkdhdbavdruudbr.supabase.co',
   SUPABASE_ANON_KEY: 'sb_publishable_id0woysUO6GYDyNlNPQBhw_oL1R3n9a',
-  VERSION: '1.0.1',
+  // Clave pública para notificaciones push (la privada está solo en Supabase)
+  VAPID_PUBLIC_KEY: 'BDaZWsKdEpj1mrU1I_RbBppIz4VQx16nPRg5nluu1m_cTyHPDMShZDRFSHuXWLExIO8SSDGAa_xqhxYnL90LVxg',
+  VERSION: '1.0.2',
   APP_ID: 'micasa-hijos-app',
 };

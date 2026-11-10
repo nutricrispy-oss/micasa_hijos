@@ -556,8 +556,8 @@ AV.more = () => {
         <p class="tiny muted">Incluye miembros, actividades, historial, configuración y registros de recompensas.</p>
       </div>
       ${S.store.mode === 'cloud' ? `${sectionTitle('📡 Notificaciones push (avanzado)')}
-      <div class="card"><p class="small muted">Para recibir avisos con la app cerrada hay que activar la función de envío en Supabase (ver guía, paso 6).</p>
-        <div class="small">Clave pública: ${s.vapid_public ? '<b style="color:var(--c-approved)">configurada ✅</b>' : '<b>no configurada</b>'}</div>
+      <div class="card"><p class="small muted">Los avisos llegan aunque la app esté cerrada. Cada teléfono debe tocar "Activar notificaciones" una vez.</p>
+        <div class="small">Clave pública: ${s.vapid_public || CONFIG.VAPID_PUBLIC_KEY ? '<b style="color:var(--c-approved)">configurada ✅</b>' : '<b>no configurada</b>'}</div>
         <button class="btn ghost block" style="margin-top:10px" data-act="vapid">🔑 Generar / cargar claves VAPID</button></div>` : ''}
       ${sectionTitle('👤 Cuenta')}
       <div class="card">
@@ -1170,7 +1170,7 @@ function b64ToU8(b64) {
 async function setupPush() {
   try {
     if (S.store.mode !== 'cloud' || !('PushManager' in window) || Notification.permission !== 'granted') return;
-    const key = set().vapid_public; if (!key) return;
+    const key = set().vapid_public || CONFIG.VAPID_PUBLIC_KEY; if (!key) return;
     const reg = await navigator.serviceWorker.ready;
     let sub = await reg.pushManager.getSubscription();
     const want = b64ToU8(key);

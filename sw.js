@@ -2,7 +2,7 @@
 // Identificador propio: todas las apps de nutricrispy-oss.github.io comparten dominio,
 // así que esta app solo crea y borra cachés con el prefijo 'micasa-hijos-'.
 const PREFIX = 'micasa-hijos-';
-const VERSION = PREFIX + 'v1.0.1';
+const VERSION = PREFIX + 'v1.0.2';
 const SHELL = [
   './', 'index.html', 'manifest.json', 'css/styles.css',
   'js/app.js', 'js/config.js', 'js/logic.js', 'js/ui.js', 'js/store-local.js', 'js/store-supabase.js',
